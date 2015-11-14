@@ -1,6 +1,9 @@
 # django secrets
 settings_secret.py
 
+# soundcloud secrets
+soundcloud_secret.py
+
 # python
 *.pyc
 

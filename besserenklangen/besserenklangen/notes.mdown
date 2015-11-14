@@ -1,3 +1,4 @@
 # notes
 * urls.py - routing, define urls here
 * settings.py - get dependencies, define database
+* basic workflow to get started: http://www.tangowithdjango.com/book17/chapters/setup.html#basic-workflows (define project then application then routes)

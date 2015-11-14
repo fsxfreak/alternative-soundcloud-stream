@@ -1,5 +1,9 @@
 # django secrets
 settings_secret.py
 
-#python
+# python
 *.pyc
+
+# skeleton css
+skeleton.css
+normalize.css

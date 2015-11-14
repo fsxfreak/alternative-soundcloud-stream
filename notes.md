@@ -7,3 +7,7 @@
 * incorporate some kind of learning to determine what kind of songs a user actually likes, to choose the correct artists to show in the feed. 
 * think of a better layout 
     - categorize by genre? order by how likely a user is to like a song?
+
+# todo
+1. find all recent tracks from those who I follow
+2. display these recent tracks sequentially on webpage

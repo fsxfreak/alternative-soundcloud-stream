@@ -1,10 +1,10 @@
 from django.http import HttpResponse
-from django.template import loader
+from django.http import Http404
+from django.shortcuts import render
 
 def index(request):
-    context = { 'message': 'generated message' }
-    template = loader.get_template('subs/index.html')
-    return HttpResponse(template.render(context))
+    context = { "message":  request}
+    return render(request, 'subs/index.html', context)
 
 def about(request):
-    return HttpResponse("<h1>besserenklangen</h1><a href='/subs'>index</a>")
+    return render(request, 'subs/about.html')

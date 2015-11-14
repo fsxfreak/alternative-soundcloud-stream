@@ -1,0 +1,3 @@
+# notes
+* urls.py - routing, define urls here
+* settings.py - get dependencies, define database

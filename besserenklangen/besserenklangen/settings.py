@@ -1,3 +1,5 @@
+from settings_secret import *
+
 """
 Django settings for besserenklangen project.
 

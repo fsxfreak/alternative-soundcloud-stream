@@ -1,2 +1,5 @@
 # django secrets
 settings_secret.py
+
+#python
+*.pyc

@@ -1,2 +1,9 @@
-<h1>besserenklangen</h1>
-<p>{{ message }}</p>
+{% extends "subs/base.html" %}
+{% block title_block %}Main Page{% endblock %}
+
+{% block body_block %}
+  <h1>Besserenklang</h1>
+  <p>
+    {{ message }}
+  </p>
+{% endblock %}

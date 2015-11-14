@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link href="{% static 'subs/skeleton.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'subs/stylesheets.css' %}" rel="stylesheet" type="text/css">
+    <title>{% block title_block %}{% endblock %}</title>
+  </head>
+
+  <body>
+    <div class="container">
+      {% include "subs/base_nav.html" %}
+      {% block body_block %}{% endblock %}
+    </div>
+  </body>
+</html>

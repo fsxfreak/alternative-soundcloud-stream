@@ -9,5 +9,9 @@
     - categorize by genre? order by how likely a user is to like a song?
 
 # todo
-1. find all recent tracks from those who I follow
+1. parse all tracks that are reposted (https://api-v2.soundcloud.com/profile/soundcloud:users:41691970?limit=50&offset=0)
 2. display these recent tracks sequentially on webpage
+
+# depends
+$ pip install soundcloud
+$ pip install python-dateutil

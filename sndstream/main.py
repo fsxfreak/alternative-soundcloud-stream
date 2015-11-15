@@ -10,20 +10,20 @@ class Feed:
         id = client.get('/resolve', url='http://soundcloud.com/%s/' % username).id
         count = client.get('users/%s/' % id).followings_count
         followings_raw = client.get('users/%s/followings' % id, limit=count)
-        followings = map(lambda artist: artist.id, followings)
-        self.feed = self.followings_recents()
+        followings = map(lambda artist: artist.id, followings_raw)
+        self.feed = self.followings_recents(client, followings)
 
-        # todo build reposted tracks as well
+        # todo build reposted tracks as well,
 
-    def followings_recents(self):
+    def followings_recents(self, client, followings):
         recency = timedelta(days = 2)
         oldest = date.today() - recency
         oldest_fmtted = { 'from': '%u-%u-%u 00:00:00' % (oldest.year, oldest.month, oldest.day) }
 
         recent_tracks = []
 
-        for artist in self.followings:
-            raw_tracks = self.client.get('users/%s/tracks' % artist, created_at=oldest_fmtted)
+        for artist in followings:
+            raw_tracks = client.get('users/%s/tracks' % artist, created_at=oldest_fmtted)
             tracks = map (lambda track: (track.id
                                        , track.created_at)
                         , raw_tracks)

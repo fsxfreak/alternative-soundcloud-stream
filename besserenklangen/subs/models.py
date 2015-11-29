@@ -5,11 +5,11 @@ class Track(models.Model):
     date = models.DateTimeField()
 
     def __unicode__(self):
-        return "%s" % self.id
+        return "%s %s" % (self.id, self.date)
 
 class Feed(models.Model):
     username = models.CharField(max_length=100)
     tracks = models.ManyToManyField(Track)
 
     def __unicode__(self):
-        return ', '.join(self.tracks.all().id)
+        return "%d" % self.tracks.first().id

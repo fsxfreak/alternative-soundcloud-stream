@@ -36,3 +36,7 @@ def track(request):
         form = UserForm()
 
     return render(request, 'subs/track.html', { 'form': form })
+
+def list(request):
+    return render(request, 'subs/list.html')
+    pass

@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.http import Http404
 from django.shortcuts import render
 
+from django.template import RequestContext, loader
+
 from .forms import UserForm
 from .sndapi import *
 
@@ -21,15 +23,21 @@ def track(request):
         form = UserForm(request.POST)
 
         if form.is_valid():
-            raw_feed = build_feed(form.cleaned_data['username'])
+            user = form.cleaned_data['username']
+            raw_feed = build_feed(user)
+
+            f = Feed(username = user)
+            f.save()
 
             for track in raw_feed:
-                t = Track.objects.create(id = track[0], date = track[1])
-                print t
-                f = Feed.objects.get_or_create(username = 'fsxfreak')
-                f.tracks.add(t)
+                t = Track(id = track[0]
+                        , date = track[1]
+                        , title = track[2]
+                        , artist = track[3]
+                        , uri = track[4])
+                t.save()
 
-            print(feed.objects.all())
+                f.tracks.add(t)
 
             return HttpResponseRedirect('track.html')
     else:
@@ -38,5 +46,9 @@ def track(request):
     return render(request, 'subs/track.html', { 'form': form })
 
 def list(request):
-    return render(request, 'subs/list.html')
-    pass
+    tracks = Feed.objects.get(username='meepokid').tracks.all().order_by('-date')
+    template = loader.get_template('subs/list.html')
+    context = RequestContext(request, {
+        'tracks': tracks,
+    })
+    return HttpResponse(template.render(context))

@@ -1,5 +1,14 @@
 {% extends "subs/base.html" %}
-
 {% block body_block %}
-<p>Listing of all the tracks in recent days for user</p>
+<h1>Their Feed</h1>
+{% if tracks %}
+	{% for track in tracks %}
+		<div class="metadata">
+			{{ track.id }}: {{ track.date }}
+		</div>
+		<div class="prettydata">
+			<a href="{{ track.uri }}">{{ track.artist }} - {{ track.title }}</a>
+		</div>
+	{% endfor %}
+{% endif %}
 {% endblock %}

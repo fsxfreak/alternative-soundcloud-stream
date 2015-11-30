@@ -6,7 +6,7 @@ class Track(models.Model):
     title = models.CharField(max_length=50, default='in the end')
     artist = models.CharField(max_length=50, default='linking parking')
     uri = models.CharField(max_length=100, default='localhost')
-    art = models.CharField(max_length=100, default='http://i.imgur.com/BNBFGfg.jpg')
+    art = models.CharField(max_length=100, editable=False, default='http://i.imgur.com/BNBFGfg.jpg')
 
     def __unicode__(self):
         return "%s - %s" % (self.artist, self.title)

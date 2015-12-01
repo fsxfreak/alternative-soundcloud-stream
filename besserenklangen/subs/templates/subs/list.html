@@ -1,5 +1,7 @@
 {% extends "subs/base.html" %}
+{% block title_block %}List{% endblock %}
 {% block body_block %}
+<h1>Display</h1>
 <form action="{% url 'list' %}" method=post>
   {% csrf_token %}
   {{ form }}
@@ -7,22 +9,19 @@
 </form>
 <h1>{{ userid }}'s Feed</h1>
 {% if tracks %}
-	{% for track in tracks %}
-	<div class="row">
-		<div class="one column">
-			<div class="artwork">
-				<img src="{{ track.art }}" width="64" alt="{{ track.title }}"/>
-			</div>
-		</div>
-		<div class="eleven columns">
-			<div class="metadata">
-				{{ track.id }}: {{ track.date }}
-			</div>
-			<div class="prettydata">
-				<a href="{{ track.uri }}">{{ track.artist }} - {{ track.title }}</a>
-			</div>
-		</div>
-	</div>
-	{% endfor %}
+  {% for track in tracks %}
+    {% if forloop.first %}<div class="section group">{% endif %}
+      <div class="col span_1_of_4">
+        <div class="artwork">
+            <img src="{{ track.art }}" width="128" alt="{{ track.title }}"/>
+        </div>
+        <div class="prettydata">
+            <a href="{{ track.uri }}">{{ track.artist }} - {{ track.title }}</a>
+        </div>
+      </div>
+    {% if forloop.counter|divisibleby:4 %}</div><div class="section group">{% endif %}
+    {% if forloop.last %}</div>{% endif %}
+  {% endfor %}
+  
 {% endif %}
 {% endblock %}

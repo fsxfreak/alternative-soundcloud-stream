@@ -1,6 +1,7 @@
 {% extends "subs/base.html" %}
-
+{% block title_block %}Track{% endblock %}
 {% block body_block %}
+<h1>Track</h1>
 <form action="{% url 'track' %}" method=post>
   {% csrf_token %}
   {{ form }}

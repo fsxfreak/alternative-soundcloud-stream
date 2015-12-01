@@ -11,7 +11,9 @@
   <body>
     <div class="container">
       {% include "subs/base_nav.html" %}
-      {% block body_block %}{% endblock %}
+      <div class="content">
+        {% block body_block %}{% endblock %}
+      </div>
     </div>
   </body>
 </html>

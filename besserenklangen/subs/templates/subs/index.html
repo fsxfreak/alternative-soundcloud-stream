@@ -1,9 +1,10 @@
 {% extends "subs/base.html" %}
-{% block title_block %}Main Page{% endblock %}
+{% load staticfiles %}
+{% block title_block %}besserenklang{% endblock %}
 
 {% block body_block %}
   <h1>Besserenklang</h1>
-  <p>
-    {{ message }}
-  </p>
+  <p>This site aims to replicate the Soundcloud feed but add priority to some sounds that I'm more likely to want to listen to.</p>
+  <p>I've found the regular Soundcloud feed to be too cluttered to find all the music that I like.</p>
+  <img width="800px" src="{% static 'subs/klangfeed.gif' %}" />
 {% endblock %}

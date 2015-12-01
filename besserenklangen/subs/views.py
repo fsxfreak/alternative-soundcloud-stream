@@ -12,8 +12,7 @@ from models import Feed
 from models import Track
 
 def index(request):
-    context = { "message":  request }
-    return render(request, 'subs/index.html', context)
+    return render(request, 'subs/index.html')
 
 def about(request):
     return render(request, 'subs/about.html')
@@ -29,7 +28,6 @@ def track(request):
             f = Feed(username = user)
             f.save()
 
-            i = 0
             for track in raw_feed:
                 art_url = 'http://i.imgur.com/BNBFGfg.jpg'
                 if track[5] != None:
@@ -44,8 +42,6 @@ def track(request):
                 t.save()
 
                 f.tracks.add(t)
-                i = i + 1
-            print i
 
             return HttpResponseRedirect('track.html')
     else:
